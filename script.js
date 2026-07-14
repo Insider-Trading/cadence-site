@@ -2,6 +2,8 @@ const header = document.querySelector("[data-header]");
 const menu = document.querySelector("[data-menu]");
 const nav = document.querySelector("[data-nav]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const root = document.documentElement;
+let scrollFrame = 0;
 
 function syncHeader() {
   header?.classList.toggle("scrolled", window.scrollY > 18);
@@ -9,6 +11,41 @@ function syncHeader() {
 
 syncHeader();
 window.addEventListener("scroll", syncHeader, { passive: true });
+
+function syncScrollEffects() {
+  scrollFrame = 0;
+  const scrollTop = window.scrollY;
+  const scrollRange = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+  const progress = Math.min(Math.max(scrollTop / scrollRange, 0), 1);
+
+  root.style.setProperty("--scroll-progress", String(progress));
+  if (prefersReducedMotion.matches) {
+    root.style.setProperty("--grid-shift", "0px");
+    root.style.setProperty("--orb-shift", "0px");
+    root.style.setProperty("--orb-shift-reverse", "0px");
+    root.style.setProperty("--ring-shift", "0px");
+    root.style.setProperty("--ring-turn", "0deg");
+    root.style.setProperty("--beam-shift", "0px");
+    return;
+  }
+
+  root.style.setProperty("--grid-shift", `${Math.min(scrollTop * 0.08, 420)}px`);
+  root.style.setProperty("--orb-shift", `${scrollTop * -0.035}px`);
+  root.style.setProperty("--orb-shift-reverse", `${scrollTop * 0.025}px`);
+  root.style.setProperty("--ring-shift", `${scrollTop * -0.06}px`);
+  root.style.setProperty("--ring-turn", `${scrollTop * 0.012}deg`);
+  root.style.setProperty("--beam-shift", `${scrollTop * -0.075}px`);
+}
+
+function scheduleScrollEffects() {
+  if (scrollFrame) return;
+  scrollFrame = window.requestAnimationFrame(syncScrollEffects);
+}
+
+syncScrollEffects();
+window.addEventListener("scroll", scheduleScrollEffects, { passive: true });
+window.addEventListener("resize", scheduleScrollEffects, { passive: true });
+prefersReducedMotion.addEventListener?.("change", scheduleScrollEffects);
 
 menu?.addEventListener("click", () => {
   const open = menu.getAttribute("aria-expanded") === "true";

@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#08090b" />
-    <meta name="description" content="Cadence is a private, local-first lyric studio that finds rhyme families as you write." />
+    <meta name="description" content="Cadence highlights rhyme families while you write and keeps songs, notes, and drafts in plain Markdown." />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Cadence | See your rhymes, track your flow." />
-    <meta property="og:description" content="A private, local-first lyric studio for rhyme, flow, and song drafts." />
+    <meta property="og:title" content="Cadence | Write lyrics and see the rhyme" />
+    <meta property="og:description" content="A desktop lyric editor with live rhyme highlighting, notes, a verse board, and plain-text files." />
     <meta property="og:url" content="https://insider-trading.github.io/cadence-site/" />
     <meta property="og:image" content="https://insider-trading.github.io/cadence-site/assets/icon.png" />
     <meta name="twitter:card" content="summary" />
-    <title>Cadence | A writing studio for rhyme and flow</title>
+    <title>Cadence | A desktop lyric editor</title>
     <link rel="icon" href="./assets/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,6 +20,16 @@
     <script>document.documentElement.classList.remove("no-js");</script>
   </head>
   <body>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <div class="ambient-scene" aria-hidden="true">
+      <div class="ambient-grid"></div>
+      <div class="ambient-orb ambient-orb-cyan"></div>
+      <div class="ambient-orb ambient-orb-pink"></div>
+      <div class="ambient-orb ambient-orb-purple"></div>
+      <div class="ambient-ring"></div>
+      <div class="ambient-beam ambient-beam-one"></div>
+      <div class="ambient-beam ambient-beam-two"></div>
+    </div>
     <div class="grain" aria-hidden="true"></div>
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="Cadence home">
@@ -36,24 +46,24 @@
         <a href="#principles">Principles</a>
         <a href="https://github.com/Insider-Trading/cadence-site/releases" target="_blank" rel="noreferrer">Releases</a>
       </nav>
-      <a class="header-download" href="https://github.com/Insider-Trading/cadence-site/releases/latest">Get Cadence <span>↓</span></a>
+      <a class="header-download" href="https://github.com/Insider-Trading/cadence-site/releases">Get Cadence <span>↓</span></a>
     </header>
 
     <main id="top">
       <section class="hero section-shell">
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-copy reveal">
-          <div class="eyebrow"><span></span> Local-first lyric studio</div>
-          <h1>See your rhymes,<br /><em>track your flow.</em></h1>
-          <p class="hero-lede">Cadence finds rhyme families as you write, color formats them, and keeps your drafts in a vault that belongs to you.</p>
+          <div class="eyebrow"><span></span> A writing app for lyrics</div>
+          <h1>Write your lyrics.<br /><em>See your rhymes.</em></h1>
+          <p class="hero-lede">Cadence colors your rhymes as you type. Keep rough bars, notes, and song drafts together, with everything saved as regular files on your computer.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="https://github.com/Insider-Trading/cadence-site/releases/latest">Download the app <span>↘</span></a>
+            <a class="button button-primary" href="https://github.com/Insider-Trading/cadence-site/releases">Download the app <span>↘</span></a>
             <a class="button button-quiet" href="#product">See how it works <span>↓</span></a>
           </div>
           <div class="hero-meta">
-            <span><i class="status-dot"></i> Windows, macOS, Linux</span>
-            <span>Desktop release candidate</span>
-            <span>No account</span>
+            <span><i class="status-dot"></i> Windows preview</span>
+            <span>Works offline</span>
+            <span>No signup</span>
           </div>
         </div>
 
@@ -128,15 +138,16 @@
 
       <div class="signal-strip" aria-label="Cadence principles">
         <div class="signal-track">
-          <span>OFFLINE ENGINE</span><i></i><span>PLAIN MARKDOWN</span><i></i><span>LEARNS YOUR EAR</span><i></i><span>NO ACCOUNT</span><i></i><span>EVERY DRAFT YOURS</span><i></i>
-          <span>OFFLINE ENGINE</span><i></i><span>PLAIN MARKDOWN</span><i></i><span>LEARNS YOUR EAR</span><i></i><span>NO ACCOUNT</span><i></i><span>EVERY DRAFT YOURS</span><i></i>
+          <span>OFFLINE RHYME ENGINE</span><i></i><span>PLAIN MARKDOWN</span><i></i><span>YOUR FIXES STICK</span><i></i><span>NO SIGNUP</span><i></i><span>GITHUB BACKUP</span><i></i>
+          <span>OFFLINE RHYME ENGINE</span><i></i><span>PLAIN MARKDOWN</span><i></i><span>YOUR FIXES STICK</span><i></i><span>NO SIGNUP</span><i></i><span>GITHUB BACKUP</span><i></i>
         </div>
       </div>
 
       <section class="product section-shell" id="product">
         <div class="section-intro reveal">
-          <div class="eyebrow"><span></span> The writing loop</div>
-          <h2>Built to help you<br />whether you're new or practiced</h2>
+          <div class="eyebrow"><span></span> What it does</div>
+          <h2>Write your verse.<br />Check the pattern when you feel like it.</h2>
+          <p>Cadence stays out of the way. When you want a closer look, the Inspector shows your rhymes, syllables, and density.</p>
         </div>
         <div class="steps-grid">
           <article class="step-card reveal">
@@ -145,8 +156,8 @@
               <div class="floating-line"><span>pressure</span><span>session</span><span>lesson</span></div>
               <div class="floating-line second"><span>flow</span><span>glow</span><span>show</span></div>
             </div>
-            <h3>Write without changing how you write.</h3>
-            <p>The editor stays clean and direct. Rhyme color appears under your words without moving the caret or breaking your rhythm.</p>
+            <h3>Type your lines.</h3>
+            <p>Rhymes light up as you go. No tags or special setup. Just type.</p>
           </article>
           <article class="step-card reveal">
             <div class="step-index">02</div>
@@ -154,8 +165,8 @@
               <div class="ear-orbit one"></div><div class="ear-orbit two"></div><div class="ear-core">ear</div>
               <span class="word-chip c1">mosaic</span><span class="word-chip c2">slant</span><span class="word-chip c3">perfect</span>
             </div>
-            <h3>Teach it the way you hear.</h3>
-            <p>Merge families, reject a match, or teach a pronunciation. Cadence adapts to your ear instead of forcing one definition of rhyme.</p>
+            <h3>Change anything that sounds wrong.</h3>
+            <p>Hear it differently? Move the word to another rhyme family, or mark it as not a rhyme. Cadence keeps your choice.</p>
           </article>
           <article class="step-card reveal">
             <div class="step-index">03</div>
@@ -163,8 +174,8 @@
               <div class="mini-lanes"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               <div class="mini-stat"><b>62%</b><span>density</span></div>
             </div>
-            <h3>Step back and see your work.</h3>
-            <p>Flow Lanes, syllable view, and density show you the structure of your draft.</p>
+            <h3>Look at your whole verse.</h3>
+            <p>Flow Lanes, syllables, and density help you spot rhyme runs, empty stretches, and packed bars.</p>
           </article>
         </div>
       </section>
@@ -172,9 +183,9 @@
       <section class="workflow section-shell" id="workflow">
         <div class="workflow-grid">
           <div class="workflow-copy reveal">
-            <div class="eyebrow"><span></span> More than an editor</div>
-            <h2>Every loose bar has somewhere to go.</h2>
-            <p>Catch fragments in Notes. Connect scraps to songs with backlinks. Move ideas across the Verse Board until they are ready. Export whenever the work needs to leave Cadence.</p>
+            <div class="eyebrow"><span></span> Ideas get messy</div>
+            <h2>Keep your half-bars, hooks, and random notes.</h2>
+            <p>Toss rough ideas into Notes, link them to a song, and move bigger pieces around on the Verse Board. Export whenever you need them somewhere else.</p>
             <ul class="feature-list">
               <li><span>01</span><div><b>Notes</b><small>A scratchpad for bars, fragments, and references.</small></div></li>
               <li><span>02</span><div><b>Verse Board</b><small>Backlog, writing, polish, and done in one view.</small></div></li>
@@ -195,10 +206,10 @@
       <section class="principles section-shell" id="principles">
         <div class="principle-card reveal">
           <div class="principle-copy">
-            <div class="eyebrow"><span></span> Local by design</div>
-            <h2>Your vault is a folder.<br />Your songs are files.</h2>
-            <p>On desktop, Cadence stores songs and notes as plain Markdown. Edit them with another tool, back them up yourself, or place the vault under version control. The rhyme engine works offline, too.</p>
-            <div class="principle-pills"><span>NO LOGIN</span><span>NO SUBSCRIPTIONS</span><span>NO BS</span></div>
+            <div class="eyebrow"><span></span> Your files, your folder</div>
+            <h2>Your songs are files.<br />Do what you want with them.</h2>
+            <p>Cadence saves your songs and notes as plain Markdown. Open the folder, make a copy, edit something in another app, or sync it with GitHub. Rhymes still work offline.</p>
+            <div class="principle-pills"><span>PLAIN MARKDOWN</span><span>WORKS OFFLINE</span><span>OPTIONAL GITHUB BACKUP</span></div>
           </div>
           <div class="file-stack" aria-hidden="true">
             <div class="file-card back"><span>notes/</span></div>
@@ -216,11 +227,11 @@ Write a line, take your time...</pre></div>
 
       <section class="final-cta section-shell reveal">
         <div class="cta-lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-        <div class="eyebrow"><span></span> The next line is yours</div>
-        <h2>Open a clean page.<br /><em>Follow the sound.</em></h2>
-        <p>Cadence is built for a private writing workflow, with no required account.</p>
+        <div class="eyebrow"><span></span> Give it a try</div>
+        <h2>Throw in your verse.<br /><em>See what it catches.</em></h2>
+        <p>Start with the example, then replace it with something you are working on.</p>
         <div class="hero-actions centered">
-          <a class="button button-primary" href="https://github.com/Insider-Trading/cadence-site/releases/latest">Download Cadence <span>↘</span></a>
+          <a class="button button-primary" href="https://github.com/Insider-Trading/cadence-site/releases">Download Cadence <span>↘</span></a>
           <a class="button button-quiet" href="https://github.com/Insider-Trading/cadence-site/releases">Browse releases <span>↗</span></a>
         </div>
       </section>
@@ -228,7 +239,7 @@ Write a line, take your time...</pre></div>
 
     <footer class="site-footer section-shell">
       <a class="brand" href="#top"><span class="brand-mark">C</span><span>Cadence</span></a>
-      <p>A local-first writing studio for rhyme and flow.</p>
+      <p>A writing app that shows you where the rhymes are.</p>
       <div><a href="https://github.com/Insider-Trading/cadence-site/releases">Releases</a><span>© <b data-year></b></span></div>
     </footer>
     <script src="./script.js" type="module"></script>
