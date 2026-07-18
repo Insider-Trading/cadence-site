@@ -47,6 +47,22 @@ window.addEventListener("scroll", scheduleScrollEffects, { passive: true });
 window.addEventListener("resize", scheduleScrollEffects, { passive: true });
 prefersReducedMotion.addEventListener?.("change", scheduleScrollEffects);
 
+function alignHashTarget() {
+  const hash = window.location.hash.slice(1);
+  if (!hash) return;
+  const target = document.getElementById(hash);
+  if (!target) return;
+  const headerHeight = header?.getBoundingClientRect().height ?? 0;
+  const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 22;
+  window.scrollTo({ top: Math.max(top, 0), behavior: "auto" });
+}
+
+if (window.location.hash) {
+  const fontsReady = document.fonts?.ready ?? Promise.resolve();
+  fontsReady.then(() => window.requestAnimationFrame(alignHashTarget));
+}
+window.addEventListener("hashchange", () => window.requestAnimationFrame(alignHashTarget));
+
 menu?.addEventListener("click", () => {
   const open = menu.getAttribute("aria-expanded") === "true";
   menu.setAttribute("aria-expanded", String(!open));
