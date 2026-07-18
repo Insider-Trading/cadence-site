@@ -91,7 +91,14 @@ button { font: inherit; }
 }
 .site-header.scrolled { border-color: var(--line); background: rgba(8,9,11,.76); backdrop-filter: blur(18px); }
 .brand { display: inline-flex; align-items: center; gap: 11px; width: max-content; color: var(--mist); font-size: 15px; font-weight: 650; letter-spacing: -.2px; }
-.brand-mark { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid rgba(255,255,255,.14); border-radius: 8px; background: linear-gradient(135deg,#30343c,#111318); box-shadow: 0 8px 22px rgba(0,0,0,.45); font-size: 14px; }
+.brand-mark,.mini-brand { display: flex; align-items: center; justify-content: center; gap: 2px; }
+.brand-mark { width: 30px; height: 30px; }
+.brand-mark i,.mini-brand i { display: block; width: 3px; border-radius: 3px; }
+.brand-mark i:nth-child(1),.mini-brand i:nth-child(1) { height: 11px; background: var(--cyan); }
+.brand-mark i:nth-child(2),.mini-brand i:nth-child(2) { height: 18px; background: var(--orange); }
+.brand-mark i:nth-child(3),.mini-brand i:nth-child(3) { height: 25px; background: var(--pink); }
+.brand-mark i:nth-child(4),.mini-brand i:nth-child(4) { height: 18px; background: var(--purple); }
+.brand-mark i:nth-child(5),.mini-brand i:nth-child(5) { height: 11px; background: var(--lime); }
 .site-nav { display: flex; align-items: center; gap: 30px; }
 .site-nav a { position: relative; color: var(--mist-4); font-size: 12px; font-weight: 550; transition: color .2s ease; }
 .site-nav a::after { position: absolute; right: 0; bottom: -7px; left: 0; height: 1px; background: var(--bone); content: ""; transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
@@ -144,7 +151,7 @@ button { font: inherit; }
 .app-body { display: grid; grid-template-columns: 54px 186px minmax(430px, 1fr) 216px; height: 510px; }
 .app-rail, .vault-preview, .inspector-preview { background: #090a0d; }
 .app-rail { display: flex; flex-direction: column; align-items: center; gap: 8px; border-right: 1px solid rgba(255,255,255,.06); padding: 13px 5px 8px; }
-.mini-brand { display: grid; width: 25px; height: 25px; place-items: center; margin-bottom: 7px; border: 1px solid rgba(255,255,255,.11); border-radius: 6px; color: var(--mist-2); font-size: 11px; font-weight: 700; }
+.mini-brand { width: 25px; height: 25px; margin-bottom: 7px; transform: scale(.78); }
 .rail-item { display: flex; width: 42px; flex-direction: column; align-items: center; gap: 3px; border-radius: 8px; padding: 8px 0; color: #555b65; font-size: 13px; }
 .rail-item.active { background: rgba(255,255,255,.06); color: var(--mist-2); }
 .rail-item small { font-size: 6.5px; font-weight: 600; }
