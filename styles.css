@@ -30,7 +30,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; background: var(--ink); }
+html { overflow-x: hidden; scroll-behavior: smooth; background: var(--ink); }
 body {
   position: relative;
   isolation: isolate;
