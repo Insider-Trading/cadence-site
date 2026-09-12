@@ -47,4 +47,4 @@ Keep the site static HTML/CSS with small progressive-enhancement scripts. Reuse 
 
 ## Review status
 
-The owner approved the combined layout direction. The updated combined preview and its revised copy are the next review artifact. This document records the design; it does not claim implementation or release validation is complete.
+The owner approved the combined preview and revised copy on September 12, 2026. The static site now implements that direction. Browser and content checks are recorded in `SITE_1_6_READINESS.md`; app release validation and publication remain separate.
