@@ -1,6 +1,8 @@
 # Cadence 1.6 site readiness
 
-Updated September 13, 2026. The owner approved B's product-focused page with A's split opening. This branch is the implementation, not a live deployment.
+Released September 13, 2026. The owner-approved B layout with A's split opening is live. PR12 deployed as `a436c8a` through successful Pages run 34759705580 after the public 1.6.0 release passed verification.
+
+All 19 public release files were downloaded anonymously and matched their checksums; all nine updater targets and the latest endpoint pass. The live HTML, CSS, JavaScript and image bytes match the approved source. Live 360/1440px checks pass for links, layout, menu dismissal and the 19 owner-verse marks. Earlier local checks cover 820/390px and JavaScript-disabled navigation. Previous releases remain available. Google Play and optional broader device testing are later work. The preparation checklist below is historical, not an open release blocker.
 
 Publication preparation: the owner has now authorized release and deployment. All app platform builds and 18 staged asset checks passed. The page's labels, Windows/APK/checksum links and installation instructions now target 1.6.0. Six content tests and the browser matrix at 360/390/820/1440px pass, including JavaScript-disabled navigation. Social image regenerated and visually checked; supplied lyrics and all 19 main-verse marks remain unchanged. Merge only after the complete public release passes download verification. Earlier pending items below are historical where this checkpoint supersedes them.
 
