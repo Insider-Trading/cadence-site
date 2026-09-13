@@ -1,6 +1,6 @@
 # Cadence color atmosphere
 
-Prepared September 13, 2026. Awaiting the owner's local visual review before publication.
+Owner-approved site update, September 13, 2026.
 
 The existing layout now sits on charcoal (#08090b), with cyan/violet and orange/pink ambient light around its edges. Cyan returns to the opening headline, and all five Cadence colors appear in section markers and outer frames. Primary buttons retain their bone surfaces. Typography, lyrics and download destinations are preserved.
 
