@@ -4,7 +4,7 @@ This public repository contains the static product site and public release asset
 
 The application source remains in a separate private repository. Changes pushed to `main` deploy through GitHub Pages.
 
-The 1.6 redesign is live, with a split opening and the owner's verse, desktop/Android layout illustrations, rhyme examples, Rhyme Lab, Share Studio, setup guidance and platform downloads. Links target the verified 1.6.0 Windows installer, production Android APK and checksums. Release assets were published and checked before deployment.
+The 1.6 redesign is live, with a split opening and the owner's verse, desktop/Android layout illustrations, rhyme examples, Rhyme Lab, Share Studio, setup guidance and platform downloads. Links target the verified 1.6.1 Windows installer, 1.6.0 production Android APK and their checksums. Release assets were published and checked before deployment.
 
 The social preview is `assets/cadence-1-6-social.png`, rendered from the same hero text and highlighting. Design decisions are in `docs/SITE_1_6_DESIGN.md`; completed checks and remaining publication gates are in `docs/SITE_1_6_READINESS.md`.
 
@@ -14,7 +14,7 @@ Site: <https://insider-trading.github.io/cadence-site/>
 
 Serve this directory with any static file server, or open `index.html` directly.
 
-The page uses static HTML/CSS. JavaScript enhances the mobile menu and opens linked help answers; it does not create the verse or other essential content. Navigation and help remain usable without JavaScript.
+The page uses static HTML/CSS. JavaScript enhances the mobile menu, opens linked help answers and controls the colored atmosphere. Navigation, help and static colored backgrounds remain usable without JavaScript. The footer animation control remembers an explicit pause; system reduced-motion preferences take priority. See `docs/SITE_ATMOSPHERE.md` for the treatment and checks.
 
 ## Checks
 

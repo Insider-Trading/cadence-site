@@ -3,6 +3,7 @@ import { createServer } from 'node:http';
 import { readFile, mkdir } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { verifyAtmosphere } from './atmosphere-check.mjs';
 
 // Install Playwright locally, or point PLAYWRIGHT_MODULE at its index.mjs.
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE
@@ -75,9 +76,13 @@ try {
   await plain.goto(url);
   assert.ok(await plain.getByRole('link', { name: 'Getting started', exact: true }).isVisible());
   assert.equal(await plain.locator('#hero-verse mark').count(), 19);
+  assert.equal(await plain.locator('[data-motion-toggle]').isVisible(), false);
+  assert.equal(await plain.locator('.atmosphere-cool').evaluate(node => getComputedStyle(node).animationName), 'none');
+  assert.notEqual(await plain.locator('.atmosphere-cool').evaluate(node => getComputedStyle(node).backgroundImage), 'none');
   assert.equal(await plain.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
   await plain.locator('#drive-guide summary').click();
   assert.equal(await plain.locator('#drive-guide').getAttribute('open'), '');
   console.log('JavaScript disabled: navigation, verse, disclosure and layout PASS');
   await plain.close();
+  await verifyAtmosphere(browser, url, output);
 } finally { await browser.close(); server.close(); }
