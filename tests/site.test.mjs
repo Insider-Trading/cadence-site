@@ -19,10 +19,13 @@ test('owner verse and engine marks stay intact', () => {
   assert.match(html, /data-density>76</);
 });
 test('release boundary is honest', () => {
-  assert.match(html, /1\.6 preview/);
-  assert.doesNotMatch(html, /releases\/download\/v1\.6\.0\//);
-  assert.match(html, /Cadence_1\.5\.1_x64-setup\.exe/);
+  assert.doesNotMatch(html, /1\.6 preview|COMING IN 1\.6|Not published yet|being prepared for release/);
+  assert.match(html, /releases\/download\/v1\.6\.0\/Cadence_1\.6\.0_x64-setup\.exe/);
+  assert.match(html, /data-download="android"[^>]*href="https:\/\/github\.com\/Insider-Trading\/cadence-site\/releases\/download\/v1\.6\.0\/cadence-v1\.6\.0-android\.apk"/);
+  assert.match(html, /releases\/download\/v1\.6\.0\/SHA256SUMS\.txt/);
+  assert.doesNotMatch(html, /releases\/download\/v1\.5\.1\//);
   assert.match(html, /not on Google Play/);
+  assert.match(html, /Do not uninstall first/);
 });
 test('navigation and local resources resolve', () => {
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);

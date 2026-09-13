@@ -4,7 +4,7 @@ This public repository contains the static product site and public release asset
 
 The application source remains in a separate private repository. Changes pushed to `main` deploy through GitHub Pages.
 
-This branch contains the approved 1.6 redesign: a split opening with the owner's verse, desktop/Android layout illustrations, rhyme examples, Rhyme Lab, Share Studio, setup guidance and platform downloads. It has not been deployed. Download links remain on the public 1.5.1 desktop release until the 1.6 artifacts pass their release checks.
+The 1.6 redesign uses a split opening with the owner's verse, desktop/Android layout illustrations, rhyme examples, Rhyme Lab, Share Studio, setup guidance and platform downloads. Links target the verified 1.6.0 Windows installer, production Android APK and checksums. Publish those release assets before deploying this branch.
 
 The social preview is `assets/cadence-1-6-social.png`, rendered from the same hero text and highlighting. Design decisions are in `docs/SITE_1_6_DESIGN.md`; completed checks and remaining publication gates are in `docs/SITE_1_6_READINESS.md`.
 

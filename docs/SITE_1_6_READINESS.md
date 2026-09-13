@@ -2,6 +2,8 @@
 
 Updated September 13, 2026. The owner approved B's product-focused page with A's split opening. This branch is the implementation, not a live deployment.
 
+Publication preparation: the owner has now authorized release and deployment. All app platform builds and 18 staged asset checks passed. The page's labels, Windows/APK/checksum links and installation instructions now target 1.6.0. Six content tests and the browser matrix at 360/390/820/1440px pass, including JavaScript-disabled navigation. Social image regenerated and visually checked; supplied lyrics and all 19 main-verse marks remain unchanged. Merge only after the complete public release passes download verification. Earlier pending items below are historical where this checkpoint supersedes them.
+
 ## Completed
 
 - Approved layout implemented in static HTML/CSS, with no framework, tracking or live account connection.
