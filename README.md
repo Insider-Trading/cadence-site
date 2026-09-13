@@ -4,7 +4,7 @@ This public repository contains the static product site and public release asset
 
 The application source remains in a separate private repository. Changes pushed to `main` deploy through GitHub Pages.
 
-The 1.6 redesign is live, with a split opening and the owner's verse, desktop/Android layout illustrations, rhyme examples, Rhyme Lab, Share Studio, setup guidance and platform downloads. Links target the verified 1.6.0 Windows installer, production Android APK and checksums. Release assets were published and checked before deployment.
+The 1.6 redesign is live, with a split opening and the owner's verse, desktop/Android layout illustrations, rhyme examples, Rhyme Lab, Share Studio, setup guidance and platform downloads. Links target the verified 1.6.1 Windows installer, 1.6.0 production Android APK and their checksums. Release assets were published and checked before deployment.
 
 The social preview is `assets/cadence-1-6-social.png`, rendered from the same hero text and highlighting. Design decisions are in `docs/SITE_1_6_DESIGN.md`; completed checks and remaining publication gates are in `docs/SITE_1_6_READINESS.md`.
 
@@ -14,7 +14,7 @@ Site: <https://insider-trading.github.io/cadence-site/>
 
 Serve this directory with any static file server, or open `index.html` directly.
 
-The page uses static HTML/CSS. JavaScript enhances the mobile menu and opens linked help answers; it does not create the verse or other essential content. Navigation and help remain usable without JavaScript.
+The page uses static HTML/CSS. JavaScript enhances the mobile menu, opens linked help answers and controls the colored atmosphere. Navigation, help and static colored backgrounds remain usable without JavaScript. The footer animation control remembers an explicit pause; system reduced-motion preferences take priority. See `docs/SITE_ATMOSPHERE.md` for the treatment and checks.
 
 ## Checks
 
@@ -28,8 +28,8 @@ Run `node scripts/render-social.mjs` with the same Playwright setup after changi
 
 The editor and Share Studio examples use the owner's supplied lyrics verbatim. Do not rewrite their wording or punctuation when updating the site.
 
-The main verse highlights were checked against the 1.6.0 Cadence engine source with the loaded CMU dictionary, Loose strictness, song-wide families, the default Cadence palette, and no learned pronunciations or manual overrides. It produces 19 highlighted words, four families, and 76% word-based density. The desktop/phone replicas and family legend use that output. Product illustrations use the app's default 0.13 highlight wash and layout-neutral marks; the large opening uses the same text colors without the wash.
+The main verse highlights were checked against the Cadence engine with the loaded CMU dictionary, Loose strictness, song-wide families, the default Cadence palette, and no learned pronunciations or manual overrides. It produces 19 highlighted words, four families, and 76% word-based density. The desktop and phone editor images are rendered from the current app frontend with that verse, standard interface size and a 24px editor font. They use the app's default 0.13 highlight wash; the large opening uses the same text colors without the wash.
 
-Share Studio retains the source verse's violet family for `Write`, `recite`, and `revise`; connective words remain uncolored. The correction excerpt uses `Shift the stress, trim excess` with the same cyan and orange families. The separate word-demo cards and Rhyme Lab example remain unchanged by owner request. Different pronunciation packs, strictness, or saved family choices can produce different app results.
+Share Studio retains the source verse's violet family for `Write`, `recite`, and `revise`; connective words remain uncolored. The correction excerpt uses `Shift the stress, trim excess` with the same cyan and orange families. The word examples and the `crazy broke` Lab query are retained. Their surrounding controls now follow the app's current components. Different pronunciation packs, strictness, or saved family choices can produce different app results.
 
-The Rhyme Lab scores are explicitly illustrative, not measured engine output. The product frames are labelled layout illustrations, not screenshots. Keep private writing and account details out of public assets.
+Lab scores are measured with Broad matching, balanced ranking, the default dictionary, no proper names and Deep cuts off: maybe 80, baby 80, wavy 92, both 73, bro 77 and smoke 100. The panel shows those selected examples, not their full search-result ordering. Backup, correction, Lab and Share Studio are static excerpts based on the app's components. The editor images show the shared app frontend at desktop and phone widths; they do not claim an operating-system capture. Keep private writing and account details out of public assets.
