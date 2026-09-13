@@ -2,7 +2,9 @@
 
 Prepared September 13, 2026. Awaiting the owner's local visual review before publication.
 
-The existing layout now sits on charcoal (#08090b), with cyan/violet and orange/pink ambient light around its edges. Cyan returns to the opening headline, and all five Cadence colors appear in section markers and outer frames. Primary buttons retain their bone surfaces. Typography, copy, lyrics, illustrated app interiors and download destinations are preserved.
+The existing layout now sits on charcoal (#08090b), with cyan/violet and orange/pink ambient light around its edges. Cyan returns to the opening headline, and all five Cadence colors appear in section markers and outer frames. Primary buttons retain their bone surfaces. Typography, lyrics and download destinations are preserved.
+
+Owner review expanded the opening description to cover syllable counts, multiword Rhyme Lab searches, connected notes and boards, and Share Studio's lyric images, printable sheets and teleprompter. The Google Drive illustration now follows Cadence's Online backup card and its Sync now menu. Download changes appears inside that menu; the fabricated permanent Review changes row is removed. The Rhyme Lab process note is removed from the page. The social preview uses the revised opening copy.
 
 `atmosphere.css` adds the treatment after the original stylesheet. The two light fields alternate over 24 and 32 seconds. A fine pointer shifts the hero light by a maximum of 12px and lights the nearest part of a panel border. Pointer coordinates stay on the decorative element to avoid invalidating the page layout. Updates share one pending animation frame; bounds are cached until exit, scrolling or resizing.
 
@@ -10,7 +12,7 @@ The footer's Pause animation / Resume animation button remembers the choice in l
 
 ## Verification
 
-- Six existing content tests pass, including the exact verse, all 19 hero highlights and desktop 1.6.1 / Android 1.6.0 links. The complete main HTML matches the preceding release after Git line-ending normalization; the original stylesheet is unchanged.
+- Six existing content tests pass, including the exact verse, all 19 hero highlights and desktop 1.6.1 / Android 1.6.0 links. The opening copy and backup illustration changed during owner review; other lyric examples retain their wording and family colors.
 - Chrome checks pass at 360, 390, 820 and 1440px for overflow, navigation, keyboard access, 44px controls and resources. A JavaScript-disabled phone check covers navigation, verse, help and static atmosphere.
 - Motion checks cover cycle timing, the 12px distance limit, border masking, pointer exit, one frame and one measurement for a 200-event burst, keyboard pause, reload persistence, live reduced-motion changes, touch and unavailable storage.
 - The visibility handler passes a deterministic hidden/visible event check. The automation browser reported both actual tabs visible during tab switching, so that run does not establish native tab visibility behavior.
