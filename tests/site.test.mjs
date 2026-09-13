@@ -25,7 +25,7 @@ test('release boundary is honest', () => {
   assert.match(html, /data-download="android"[^>]*href="https:\/\/github\.com\/Insider-Trading\/cadence-site\/releases\/download\/v1\.6\.0\/cadence-v1\.6\.0-android\.apk"/);
   assert.match(html, /releases\/download\/v1\.6\.0\/SHA256SUMS\.txt/);
   assert.match(html, /releases\/download\/v1\.6\.1\/SHA256SUMS\.txt/);
-  assert.doesNotMatch(html, /v1\.6\.1\/.*android\.apk/);
+  assert.doesNotMatch(html, /v1\.6\.1\/[^"\s]*android\.apk/);
   assert.doesNotMatch(html, /releases\/download\/v1\.5\.1\//);
   assert.match(html, /not on Google Play/);
   assert.match(html, /Do not uninstall first/);
