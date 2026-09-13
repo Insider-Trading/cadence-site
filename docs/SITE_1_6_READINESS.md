@@ -17,7 +17,7 @@ Reproduce the public checks with the commands in the README. Browser captures st
 
 ## Remaining before publication
 
-1. Correct the app release workflow's Android signing path, then complete authorized cross-platform staging. Local production Android and Windows 1.5.1 to 1.6.0 upgrades, preservation, installer signature and checksum checks now pass. Public updater verification follows publication. Package 6 engineering acceptance is already closed; do not reopen it for this site work.
+1. The app release workflow's production Android signing path is configured and locally verified. Complete its first authorized hosted cross-platform staging run. Local production Android and Windows 1.5.1 to 1.6.0 upgrades, preservation, installer signature and checksum checks now pass. Public updater verification follows publication. Package 6 engineering acceptance is already closed; do not reopen it for this site work.
 2. Keep release notes and the app checklist aligned with the verified candidates. Final physical Android tutorial, installed Windows replay/first-run marker behavior and repaired Share Studio pass; do not describe that as a clean-machine install or a live release.
 3. Capture any final release-candidate app media using sample writing only. Replace simplified frames where needed; keep illustrations labelled if retained. Do not describe these frames as tested app screenshots.
 4. Once verified files exist, change preview labels, download URLs, platform versions, metadata and setup wording together. Update the release-boundary tests intentionally, regenerate the social image, and rerun content/browser/link checks. Confirm each download's checksum.
