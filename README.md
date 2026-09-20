@@ -4,9 +4,9 @@ This public repository contains the static product site and public release asset
 
 The application source remains in a separate private repository. Changes pushed to `main` deploy through GitHub Pages.
 
-The 1.7 preparation branch updates download targets, storage and sync guidance, and the release label/social image. It must remain unmerged until the matching public release is verified. See [1.7 readiness](docs/SITE_1_7_READINESS.md).
+The 1.7 update points to the verified public release and updates storage/sync guidance, the release label and social image. All 19 public release files passed anonymous download and hash checks before this site update. See [1.7 acceptance](docs/SITE_1_7_READINESS.md).
 
-The 1.6 redesign is live, with a split opening and the owner's verse, desktop/Android layout illustrations, rhyme examples, Rhyme Lab, Share Studio, setup guidance and platform downloads. Links target the verified 1.6.1 Windows installer, 1.6.0 production Android APK and their checksums. Release assets were published and checked before deployment.
+The site retains the 1.6 redesign, with a split opening and the owner's verse, desktop/Android layout illustrations, rhyme examples, Rhyme Lab, Share Studio, setup guidance and platform downloads. Links target the verified 1.7.0 Windows installer, production Android APK and checksums. Release assets were published and checked before deployment.
 
 The social preview is `assets/cadence-1-6-social.png`, rendered from the same hero text and highlighting. Design decisions are in `docs/SITE_1_6_DESIGN.md`; completed checks and remaining publication gates are in `docs/SITE_1_6_READINESS.md`.
 
