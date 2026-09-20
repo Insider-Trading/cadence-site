@@ -60,6 +60,14 @@ try {
       .map(n => ({ text: n.textContent.trim(), height: n.getBoundingClientRect().height })));
     assert.deepEqual(shortTargets, [], width + ': touch targets');
     await page.evaluate(() => window.scrollTo(0, 0));
+    // A full-page screenshot does not trigger loading for offscreen lazy images.
+    for (const img of await page.locator('img').all()) {
+      if (!await img.isVisible()) continue;
+      await img.scrollIntoViewIfNeeded();
+      await img.evaluate(el => el.decode());
+      assert.ok(await img.evaluate(el => el.naturalWidth > 0), 'preview image loaded');
+    }
+    await page.evaluate(() => window.scrollTo(0, 0));
     await page.screenshot({ path: resolve(output, 'site-' + width + '.png'), fullPage: true });
     if (width === 390) {
       await page.screenshot({ path: resolve(output, 'phone-opening.png') });
