@@ -16,7 +16,7 @@ try {
     .release-label{font-size:11px}.sheet-top{font-size:10px}
   ` });
   if (await page.evaluate(() => document.documentElement.scrollHeight > 630)) throw new Error('Social image overflow');
-  const output = resolve(root, 'assets/cadence-1-6-social.png');
+  const output = resolve(root, 'assets/cadence-1-7-social.png');
   await page.screenshot({ path: output });
   console.log('Rendered 1200 × 630 social image from the site hero.');
 } finally { await browser.close(); }
