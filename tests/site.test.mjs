@@ -20,12 +20,11 @@ test('owner verse and engine marks stay intact', () => {
 });
 test('release boundary is honest', () => {
   assert.doesNotMatch(html, /1\.6 preview|COMING IN 1\.6|Not published yet|being prepared for release/);
-  assert.match(html, /releases\/download\/v1\.6\.1\/Cadence_1\.6\.1_x64-setup\.exe/);
-  assert.match(html, /Desktop 1\.6\.1 and Android 1\.6\.0 are available/);
-  assert.match(html, /data-download="android"[^>]*href="https:\/\/github\.com\/Insider-Trading\/cadence-site\/releases\/download\/v1\.6\.0\/cadence-v1\.6\.0-android\.apk"/);
-  assert.match(html, /releases\/download\/v1\.6\.0\/SHA256SUMS\.txt/);
-  assert.match(html, /releases\/download\/v1\.6\.1\/SHA256SUMS\.txt/);
-  assert.doesNotMatch(html, /v1\.6\.1\/[^"\s]*android\.apk/);
+  assert.match(html, /releases\/download\/v1\.7\.0\/Cadence_1\.7\.0_x64-setup\.exe/);
+  assert.match(html, /Cadence 1\.7\.0 is available for desktop and Android/);
+  assert.match(html, /data-download="android"[^>]*href="https:\/\/github\.com\/Insider-Trading\/cadence-site\/releases\/download\/v1\.7\.0\/cadence-v1\.7\.0-android\.apk"/);
+  assert.match(html, /releases\/download\/v1\.7\.0\/SHA256SUMS\.txt/);
+  assert.match(html, /releases\/download\/v1\.7\.0\/SHA256SUMS\.txt/);
   assert.doesNotMatch(html, /releases\/download\/v1\.5\.1\//);
   assert.match(html, /not on Google Play/);
   assert.match(html, /Do not uninstall first/);
