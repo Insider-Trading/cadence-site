@@ -10,6 +10,12 @@ The theme sample changes the actual rendered writing surface. Visitors can choos
 
 The earlier screenshot-switching implementation did not satisfy the approved interactive scope and has been replaced. Neither working sample contains an image or an image-opening link. Static, labeled captures remain available if JavaScript does not run. Other product screenshots elsewhere on the page still open at full size.
 
+## Rhyme correction sample
+
+The former three-column rhyme section now pairs one live verse with a correction panel. Selecting any of the 19 original highlighted words reveals its family and members. Visitors can move that word to another family or mark it as not a rhyme; word color, family membership and the correction count update together. Undo and Reset sample are reversible. The fixed starting analysis is copied from the canonical engine-derived hero. Corrections are local sample overrides, not fresh dictionary analysis or application settings. Original lyrics and logical line breaks remain unchanged.
+
+At 720px and below, the same panel moves directly beneath the selected logical line. Resizing moves it back into the desktop side panel while preserving selection, corrections and keyboard focus. Words and controls have at least 44px targets. Escape returns focus from correction controls to the selected word. Shared motion moves the real panel and respects pause/reduced motion. Script-free visitors receive a text explanation, with no imitation buttons or screenshot link.
+
 ## Visual and motion identity
 
 Keep Newsreader, Space Grotesk, charcoal and bone surfaces, and the application's family colors. Small controls have a light spring; writing surfaces move with more weight. Use the shared app spring, roughly 240ms control settling and 320ms surface entry, shortened by 20% on phones. Animate the real content being opened. Preserve immediate interaction and ordinary page scrolling. No autoplay, additional ambient loops, confetti or decorative page outlines.
@@ -29,3 +35,7 @@ This is sample acceptance, not complete site release acceptance. Full-page enlar
 ## Remaining publication work
 
 Refresh remaining product captures, setup guidance, page/social metadata and social image; finish navigation/disclosure polish after owner review. Public download activation follows separate application publication approval and independent asset verification. Draft PR19 remains unmerged until that gate passes. Staged download links are not public-release evidence.
+
+## Rhyme correction verification, October 11
+
+Fourteen content, contrast and correction-state tests pass. Browser checks verify reassignment, exclusion, Undo, Reset, exact verse preservation, 19 selectable words, no images in the section, keyboard activation/Escape, rapid selection and mobile panel placement. Desktop, 320px, 390px and 844 x 390 landscape retain the selected word and corrections without horizontal overflow; phone controls measure at least 44px. Normal motion runs, paused motion stops while selection still works, and the reduced-motion fixture records zero animation calls while corrections still apply. Script-free fallback remains readable. Physical Pixel taps verify reassignment and exclusion; display OFF is verified afterward and temporary forwarding removed. These checks cover this sample, not broader site release acceptance.

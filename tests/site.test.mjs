@@ -68,3 +68,12 @@ test('interactive sections expose working samples, not image links', () => {
   assert.match(html, /notes-demo\.js/);
   assert.match(html, /theme-demo\.js/);
 });
+
+
+test('rhyme corrections use a live workspace with a text fallback', () => {
+  const block = html.match(/<section[^>]*id="rhyme-families">([\s\S]*?)<\/section>/)?.[1];
+  assert.ok(block);
+  assert.doesNotMatch(block, /<img|app-capture-link|In the verse above/);
+  for (const hook of ['data-rhyme-demo hidden','data-rhyme-panel','data-rhyme-undo','data-rhyme-reset','data-rhyme-fallback']) assert.ok(block.includes(hook),hook);
+  assert.match(html, /rhyme-demo\.js/);
+});
