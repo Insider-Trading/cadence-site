@@ -56,25 +56,15 @@ test('social metadata points to the generated 1200 by 630 image', () => {
   assert.equal(png.readUInt32BE(20), 630);
 });
 
-test('guided previews have authentic desktop and phone assets', () => {
-  const choices = [...html.matchAll(/data-asset="([^"]+)"/g)].map(m => m[1]);
-  assert.equal(choices.length, 7);
-  for (const choice of choices) for (const [device, width, height] of [['desktop',1160,760],['phone',390,844]]) {
-    const jpeg = readFileSync(new URL('assets/cadence-1-8-' + choice + '-' + device + '.jpg', root));
-    assert.equal(jpeg.readUInt16BE(0), 0xffd8, 'JPEG encoding');
-    let dimensions;
-    for (let offset = 2; offset < jpeg.length;) {
-      assert.equal(jpeg[offset++], 0xff);
-      const marker = jpeg[offset++];
-      const length = jpeg.readUInt16BE(offset);
-      if ([0xc0,0xc1,0xc2].includes(marker)) {
-        dimensions = [jpeg.readUInt16BE(offset+5),jpeg.readUInt16BE(offset+3)];
-        break;
-      }
-      offset += length;
-    }
-    assert.deepEqual(dimensions, [width,height], choice + ' ' + device + ' dimensions');
+test('interactive sections expose working samples, not image links', () => {
+  for (const id of ['notes-demo','themes-demo']) {
+    const section = html.match(new RegExp('<section[^>]*id="' + id + '"[\\s\\S]*?</section>'))?.[0];
+    assert.ok(section);
+    assert.doesNotMatch(section, /<a[^>]*href="[^"]+\.jpg"/);
+    assert.match(section, /class="demo-fallback"/);
   }
-  assert.equal([...html.matchAll(/class="demo-controls"[^>]*hidden/g)].length, 2, 'static fallback hides inactive controls');
-  assert.equal([...html.matchAll(/data-demo-status role="status"/g)].length, 2, 'preview changes are announced');
+  assert.match(html, /data-notes-app hidden/);
+  assert.match(html, /data-theme-app hidden/);
+  assert.match(html, /notes-demo\.js/);
+  assert.match(html, /theme-demo\.js/);
 });

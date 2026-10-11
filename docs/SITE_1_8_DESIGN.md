@@ -1,23 +1,31 @@
 # Cadence website 1.8 interactive demonstrations
 
-Approved direction: October 11, 2026. Keep the current identity and add interactive product demonstrations with the application's springy motion. Publication remains separate.
+Approved direction: October 11, 2026. Keep the current identity and add working product samples with the application's springy motion. Publication remains separate.
 
-The first review slice consists of the existing hero, a dedicated Notes demonstration and a theme comparison. Use real 1.8 app captures from disposable sample profiles. Website controls remain outside the images, so visitors can distinguish a guided preview from the installed app. Selecting a Notes view moves the actual captured writing surface; no detached decorative border. Theme controls change the same writing sample without changing the website or application settings.
+## Working samples
 
-Keep Newsreader, Space Grotesk, the existing charcoal and bone surfaces and the app's family colors. Retain the owner's verse verbatim and the 19 engine-derived marks/four families/76% coverage. Motion uses the app's spring and settle curves, with roughly 240ms controls and 320ms surfaces. Preserve ordinary scrolling and immediate control response. No autoplay or looping demonstrations.
+The Notes sample supports opening and creating notes, editing titles and text, adding and removing tags, searching titles/text/tags, switching between writing and preview, and checking tasks in the preview. Returning to the library preserves changes. All changes remain in memory and reset on reload; the sample never touches application writing, settings, backups or online accounts. Preview renders text safely and supports headings and task lists. It is a bounded sample, not the full application editor.
 
-At 320px and 390px use full phone captures with 44px controls. Keyboard, rapid reversal, resizing, image failures, reduced motion and the site pause preference must remain usable. Static images, captions, links and downloads work without JavaScript. Verify animation on real content rather than merely checking a helper class.
+The theme sample changes the actual rendered writing surface. Visitors can choose Cadence, Warm studio, Paper or Patterned, switch the writing font, and independently toggle rhyme colors and patterns. It uses application surface palettes and contrast-adjusted rhyme ink. The verse retains the owner's exact writing and its original 19 engine-derived marks/four families/76% coverage. This sample does not analyze new writing.
 
-Follow-up before site publication: refresh remaining product captures, setup guidance, page/social metadata and social image; finish navigation/disclosure polish after owner review of the first slice. Public download activation follows separate application publication approval and independent asset verification. Draft PR19 must remain unmerged until that gate passes.
+The earlier screenshot-switching implementation did not satisfy the approved interactive scope and has been replaced. Neither working sample contains an image or an image-opening link. Static, labeled captures remain available if JavaScript does not run. Other product screenshots elsewhere on the page still open at full size.
 
-## Motion identity
+## Visual and motion identity
 
-Playful and responsive. Small controls have a light spring; writing surfaces have paper-like weight and only a small overshoot. Use the app spring for most responses, 120ms paint feedback, 240ms control settling and 320ms surface changes, shortened by 20% on phones. The primary action moves real content. Selection feedback supports it; the existing low-key atmosphere stays in the background. No new ambient loops, confetti or ornamental page outlines.
+Keep Newsreader, Space Grotesk, charcoal and bone surfaces, and the application's family colors. Small controls have a light spring; writing surfaces move with more weight. Use the shared app spring, roughly 240ms control settling and 320ms surface entry, shortened by 20% on phones. Animate the real content being opened. Preserve immediate interaction and ordinary page scrolling. No autoplay, additional ambient loops, confetti or decorative page outlines.
 
-The first slice uses guided, explicitly labeled app captures, not a simulated editable app or a video recording. Visitors follow a rhyme family in the original verse, choose Library/Live Preview/Source, and compare four appearances on the same song. Each preview loads on demand and preserves the current view if loading fails. Rapid choices resolve to the latest request. Pausing or reducing motion settles any running transition immediately.
+Pausing or reducing motion settles running transitions. Controls continue to work without animation. Theme transitions affect only the sample. The site remains separate from the visitor's selected sample appearance.
 
-## First-slice verification
+## Verification
 
-October 11: seven content/asset checks pass, including the exact verse, 19 marks, four families, local links and all fourteen capture dimensions. Browser review covers 1440px desktop, 390px and 320px phones, 844 x 390 landscape, keyboard activation, rapid changes and selection preservation across breakpoints. A failed image keeps the prior preview and a later valid choice recovers. Instrumented local fixtures verify animation calls occur normally, stop while paused, and remain zero when reduced motion is requested. With scripts absent, static responsive images, captions and downloads remain available. A physical Pixel tap opens the note; the guarded test confirms display OFF afterward.
+October 11 correction: ten automated tests pass for content, links, the exact verse, working-sample entry points, and contrast across the theme palettes. JavaScript syntax checks pass.
 
-This is a first-slice review, not complete site release acceptance. Full-page enlarged text, broader browsers and the remaining 1.8 content refresh still precede publication. The staged download links are not public-release evidence.
+Browser interaction checks cover note creation and renaming, text editing, tag addition and searching, task changes reflected in source, return/reopen preservation, safe literal rendering of HTML-like input, real theme/font/pattern changes, and removal of image links from both interactive samples. Responsive review covers desktop, 320px and 390px phones, and 844 x 390 landscape with draft preservation across resizing. No horizontal overflow was found in the narrow sample editor. Script-free fixtures retain labeled captures. Instrumented fixtures confirm content animation normally, no further animation while paused, and zero animation calls under reduced motion.
+
+A physical Pixel check creates a note and types its title through the real phone interface. The guarded device helper verifies display OFF afterward and temporary port forwarding is removed. No phone settings or application data were changed.
+
+This is sample acceptance, not complete site release acceptance. Full-page enlarged text, broader browsers and the remaining 1.8 content refresh still precede publication.
+
+## Remaining publication work
+
+Refresh remaining product captures, setup guidance, page/social metadata and social image; finish navigation/disclosure polish after owner review. Public download activation follows separate application publication approval and independent asset verification. Draft PR19 remains unmerged until that gate passes. Staged download links are not public-release evidence.
