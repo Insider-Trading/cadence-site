@@ -170,8 +170,7 @@ a:focus-visible,button:focus-visible {
 }
 .verse-sheet {
   position:relative;
-  padding:32px 0 12px 35px;
-  border-left:1px solid #3d454f
+  padding:32px 0 12px 32px
 }
 .sheet-top {
   display:flex;
@@ -195,6 +194,12 @@ a:focus-visible,button:focus-visible {
   top:6px;
   font:9px var(--ui);
   color:#8c949f
+}
+.hero-a .verse .line-number {
+  left:auto;
+  right:calc(100% + 14px);
+  width:2ch;
+  text-align:right
 }
 .verse mark {
   padding:0;
@@ -646,7 +651,7 @@ footer {
     max-width:350px
   }
   .verse-sheet {
-    padding-left:26px
+    padding-left:28px
   }
   .verse p {
     font-size:23px

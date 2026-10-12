@@ -1,0 +1,49 @@
+
+.rhyme-demo[hidden],[data-rhyme-fallback][hidden] { display:none!important; }
+.rhyme-workspace { display:grid; grid-template-columns:minmax(0,1fr) 320px; align-items:start; }
+.rhyme-writing { min-width:0; padding:32px; }
+.rhyme-section-label { font:11px var(--ui); text-transform:uppercase; letter-spacing:.12em; color:var(--sample-muted); margin:0 0 24px; }
+.rhyme-line { font:400 clamp(22px,2.2vw,30px)/2 var(--writing); color:var(--sample-text); margin:0 0 20px; max-width:none; }
+.sample-app .rhyme-word { display:inline-block; vertical-align:baseline; font:inherit; line-height:1.5; min-width:44px; min-height:44px; padding:0 2px; border:0; border-radius:4px; background:transparent; color:var(--word-color,var(--sample-text)); cursor:pointer; }
+.rhyme-word[data-family=cyan] { --word-color:var(--cyan); }
+.rhyme-word[data-family=orange] { --word-color:var(--orange); }
+.rhyme-word[data-family=pink] { --word-color:var(--pink); }
+.rhyme-word[data-family=violet] { --word-color:var(--violet); }
+.rhyme-word[data-family=none] { --word-color:var(--sample-text); text-decoration:underline dotted var(--sample-muted); text-underline-offset:6px; }
+.sample-app .rhyme-word[data-related=true] { background:color-mix(in srgb,var(--word-color) 8%,transparent); }
+.sample-app .rhyme-word[aria-pressed=true] { background:color-mix(in srgb,var(--word-color) 15%,transparent); box-shadow:inset 0 -2px var(--word-color); }
+.rhyme-word:hover { text-decoration:underline; text-underline-offset:6px; }
+[data-rhyme-dock] { border-left:1px solid var(--sample-border); background:var(--sample-surface); align-self:stretch; padding:28px 20px; }
+.rhyme-panel { --rhyme-accent:var(--orange); border-top:2px solid var(--rhyme-accent); padding-top:18px; font:14px/1.5 var(--ui); }
+.rhyme-panel-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+.rhyme-panel h3 { font:400 32px/1.2 var(--writing); color:var(--rhyme-accent); margin:0; }
+.rhyme-panel-heading>span { color:var(--sample-muted); font-size:12px; }
+.rhyme-panel p { max-width:none; }
+.rhyme-members { color:var(--sample-text); font-size:13px; line-height:1.7; min-height:44px; margin:16px 0 22px; }
+.rhyme-control-label { font-size:12px; color:var(--sample-muted); margin:0 0 10px; }
+.rhyme-family-choices { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.sample-app .rhyme-family-choice { text-align:left; padding:10px; background:transparent; min-width:0; }
+.rhyme-family-choice>span { color:var(--choice-color); display:block; font-weight:500; }
+.rhyme-family-choice>small { display:block; font-size:10px; line-height:1.5; color:var(--sample-muted); margin-top:4px; overflow-wrap:anywhere; }
+.sample-app .rhyme-family-choice[aria-pressed=true] { border-color:var(--choice-color); background:color-mix(in srgb,var(--choice-color) 8%,transparent); }
+.sample-app .rhyme-exclude { width:100%; margin-top:12px; background:transparent; }
+.rhyme-panel-hint { font-size:11px; color:var(--sample-muted); margin:14px 0 0; }
+.rhyme-tools { display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap; padding:16px 24px; border-top:1px solid var(--sample-border); }
+.rhyme-tools>span { font-size:12px; color:var(--sample-muted); }
+.rhyme-tools>div { display:flex; gap:8px; }
+.rhyme-demo button:disabled { opacity:.45; cursor:default; transform:none; }
+.rhyme-support { display:flex; flex-wrap:wrap; gap:8px 20px; margin:20px 0 0; max-width:none; font-size:13px; color:var(--muted); }
+.rhyme-static { border-block:1px solid var(--line); padding:24px 0; }
+.motion-running .sample-app .rhyme-word { transition:color 120ms ease-out,background-color 120ms ease-out; }
+@media(max-width:720px) {
+  .rhyme-workspace { display:block; }
+  .rhyme-writing { padding:22px 18px; }
+  .rhyme-line { font-size:23px; line-height:2.15; margin-bottom:22px; }
+  [data-rhyme-dock] { display:none; }
+  .rhyme-panel { padding:18px 14px; margin:8px 0 28px; border:1px solid var(--sample-border); border-top:2px solid var(--rhyme-accent); border-radius:8px; background:var(--sample-surface); }
+  .rhyme-members { margin:12px 0 16px; min-height:0; }
+  .rhyme-tools { padding:14px; }
+  .rhyme-family-choice>small { font-size:11px; }
+}
+@media(prefers-reduced-motion:reduce) { .rhyme-demo * { transition:none!important; } }
+.rhyme-demo .rhyme-line { max-width:none; line-height:1.85; }

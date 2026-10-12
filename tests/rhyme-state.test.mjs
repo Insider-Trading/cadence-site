@@ -1,0 +1,41 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createCorrections } from '../rhyme-state.mjs';
+const sample = [{word:'Shift',family:'cyan'},{word:'stress',family:'orange'},{word:'excess',family:'orange'},{word:'breathe',family:'pink'}];
+test('corrections update membership, support exclusion, and preserve source', () => {
+  const state = createCorrections(sample);
+  assert.equal(state.change('STRESS','cyan'),true);
+  assert.deepEqual(state.members('cyan'),['shift','stress']);
+  assert.deepEqual(state.members('orange'),['excess']);
+  state.change('stress',null);
+  assert.equal(state.family('stress'),null);
+  assert.deepEqual(sample[1],{word:'stress',family:'orange'});
+  state.undo();
+  assert.equal(state.family('stress'),'cyan');
+  state.undo();
+  assert.equal(state.family('stress'),'orange');
+  assert.equal(state.changed,0);
+});
+test('reset is undoable and repeated or invalid changes do not consume undo', () => {
+  const state = createCorrections(sample);
+  assert.equal(state.change('stress','orange'),false);
+  assert.equal(state.change('unknown','cyan'),false);
+  assert.equal(state.change('stress','missing'),false);
+  assert.equal(state.canUndo,false);
+  state.change('stress','pink');
+  state.change('Shift',null);
+  assert.equal(state.changed,2);
+  state.reset();
+  assert.equal(state.changed,0);
+  state.undo();
+  assert.equal(state.changed,2);
+  assert.equal(state.family('shift'),null);
+});
+test('independent samples and returning to original family stay isolated', () => {
+  const first = createCorrections(sample);
+  const second = createCorrections(sample);
+  first.change('stress','pink');
+  assert.equal(second.family('stress'),'orange');
+  first.change('stress','orange');
+  assert.equal(first.changed,0);
+});
