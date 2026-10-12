@@ -159,3 +159,12 @@
 
 .sample-app { color-scheme:dark; }
 .theme-workspace[data-theme-style="paper"] { color-scheme:light; }
+
+.sample-body.is-editing { position:relative; isolation:isolate; }
+.sample-note-surface { position:absolute; inset:0; z-index:-1; background:var(--sample-editor); border-radius:12px; transform-origin:top left; pointer-events:none; }
+.sample-body.is-editing .sample-title { transform-origin:top left; }
+[data-theme-app] .demo-controls.has-selection { position:relative; isolation:isolate; }
+.theme-selection { position:absolute; z-index:-1; border-radius:8px; background:var(--paper); transform-origin:top left; pointer-events:none; }
+[data-theme-app] .has-selection button[aria-pressed=true] { background:transparent; border-color:transparent; }
+.motion-running [data-theme-app] .demo-controls button:active { transform:none; }
+.motion-running .theme-writing mark { transition:color 180ms ease-out; }

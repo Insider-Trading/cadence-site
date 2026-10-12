@@ -6,7 +6,7 @@ Approved direction: October 11, 2026. Keep the current identity and add working 
 
 The Notes sample supports opening and creating notes, editing titles and text, adding and removing tags, searching titles/text/tags, switching between writing and preview, and checking tasks in the preview. Returning to the library preserves changes. All changes remain in memory and reset on reload; the sample never touches application writing, settings, backups or online accounts. Preview renders text safely and supports headings and task lists. It is a bounded sample, not the full application editor.
 
-The theme sample changes the actual rendered writing surface. Visitors can choose Cadence, Warm studio, Paper or Patterned, switch the writing font, and independently toggle rhyme colors and patterns. It uses application surface palettes and contrast-adjusted rhyme ink. The verse retains the owner's exact writing and its original 19 engine-derived marks/four families/76% coverage. This sample does not analyze new writing.
+The theme sample changes the actual rendered writing surface. Visitors can choose Cadence, Warm studio or Paper, select a separate rhyme palette and writing font, and independently toggle rhyme colors and patterns. It uses application surface palettes and contrast-adjusted rhyme ink. The verse retains the owner's exact writing and its original 19 engine-derived marks/four families/76% coverage. This sample does not analyze new writing.
 
 The earlier screenshot-switching implementation did not satisfy the approved interactive scope and has been replaced. Neither working sample contains an image or an image-opening link. Static, labeled captures remain available if JavaScript does not run. Other product screenshots elsewhere on the page still open at full size.
 
@@ -53,3 +53,12 @@ Seventeen automated tests pass. Browser review covers desktop, 320px, 390px, sho
 ## Hero gutter refinement, October 12
 
 Owner review removed the older vertical divider and multicolor strip beside the opening verse. A reserved number gutter with a 14px text gap now provides alignment on desktop and phones. This supersedes the 1.6 divider choice. Browser checks at 1440px, 390px and 320px confirm no horizontal overflow, consistent number spacing and working family selection. Verse text and highlighting are unchanged.
+
+
+## Notes and theme motion, October 12
+
+Opening a nearby note expands its filled writing surface from the chosen card and moves the real title into place. Editor controls enter as a group. Distant or offscreen origins use a short local transition instead of sweeping across the page. New notes use a small upward spring and accept typing immediately. Returning restores library scroll and focus to the note, with title continuity when it remains nearby. Pointer or keyboard interaction finishes the active note motion; window and keyboard viewport resizing also settle it.
+
+A single theme selection background follows the chosen preset, including wrapped rows. Rapid changes start from its current displayed position. Interface and rhyme colors transition while writing geometry stays fixed; font, palette, patterns and color visibility remain independent. All motion uses the shared timing/easing and existing pause/reduced-motion controls.
+
+Twenty-one tests pass, including interruption, pause/visibility/resize cleanup, reduced motion, mobile timing and selection retargeting. Browser checks cover desktop, 320/390px and short landscape, editable draft preservation, keyboard activation, focus/scroll return, wrapped theme controls and rapid selection. Instrumented fixtures confirm moving surfaces/titles in normal mode, immediate settling on Pause and zero spatial animations under reduced motion. Physical Pixel checks cover opening/returning and creating a note with immediate Gboard input; the guarded helper verifies display OFF and temporary forwarding is removed. No application source, user writing or publication was changed.

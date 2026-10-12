@@ -15,6 +15,9 @@
   ];
   let nextId = 5;
   let query = '';
+  let libraryScroll = null;
+  panel.addEventListener('pointerdown', () => motion?.finish(panel), {capture:true});
+  panel.addEventListener('keydown', () => motion?.finish(panel), {capture:true});
   const element = (tag, className, text) => {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -24,6 +27,9 @@
   const announce = text => { status.textContent = text; };
   const countWords = body => body.replace(/^#{1,3}\s+|^- \[[ xX]\]\s+/gm,'').trim().split(/\s+/).filter(Boolean).length;
   const library = (returnId, animate = true) => {
+    const origin = motion?.capture(panel.querySelector('.sample-title'),true);
+    motion?.finish(panel);
+    panel.classList.remove('is-editing');
     panel.innerHTML = '<label class="sample-search"><span>Find a note</span><input type="search" placeholder="Search titles, text or tags" aria-label="Search sample notes"></label><div class="sample-note-grid"></div><p class="sample-empty" hidden>No notes match. Try another search.</p>';
     const search = panel.querySelector('input');
     const grid = panel.querySelector('.sample-note-grid');
@@ -42,7 +48,10 @@
         const tags = element('span','sample-card-tags');
         note.tags.forEach(tag => tags.append(element('span','sample-tag',tag)));
         card.append(tags);
-        card.addEventListener('click',() => editor(note));
+        card.addEventListener('click',() => {
+          libraryScroll = window.scrollY;
+          editor(note,false,card);
+        });
         grid.append(card);
       }
       empty.hidden = grid.children.length !== 0;
@@ -51,11 +60,16 @@
     search.addEventListener('input', () => { query = search.value; renderCards(); });
     renderCards();
     announce(notes.length + ' notes in this sample.');
-    if (animate) motion?.enter(panel,-1);
-    if (returnId) (panel.querySelector('[data-note-id="' + returnId + '"]') || search).focus({preventScroll:true});
+    const card = returnId && panel.querySelector('[data-note-id="' + returnId + '"]');
+    if (returnId && libraryScroll !== null) window.scrollTo({top:libraryScroll,behavior:'instant'});
+    if (returnId) (card || search).focus({preventScroll:true});
+    if (animate) motion?.returnNote(card,origin);
   };
-  const editor = (note, isNew = false) => {
-    panel.innerHTML = '<div class="sample-editor-heading"><button type="button" class="sample-back">← Library</button></div><label class="sample-title-label"><span class="sr-only">Sample note title</span><input class="sample-title" maxlength="100" aria-label="Sample note title" placeholder="Untitled note"></label><div class="sample-tag-list" aria-label="Note tags"></div><form class="sample-tag-form"><label class="sr-only" for="sample-tag-input">New tag</label><input id="sample-tag-input" maxlength="24" placeholder="Add a tag" autocomplete="off"><button type="submit">Add tag</button><span class="sample-tag-message" role="status"></span></form><div class="sample-editor-tools" role="group" aria-label="Sample note view"><button type="button" data-note-mode="write" aria-pressed="true">Write</button><button type="button" data-note-mode="preview" aria-pressed="false">Preview</button><span class="sample-word-count"></span></div><textarea class="sample-note-input" aria-label="Sample note text" maxlength="12000" spellcheck="true"></textarea><div class="sample-note-preview" aria-label="Rendered sample note" tabindex="0" hidden></div>';
+  const editor = (note, isNew = false, card) => {
+    const origin = {card:motion?.capture(card),title:motion?.capture(card?.querySelector('.sample-card-title'),true)};
+    motion?.finish(panel);
+    panel.classList.add('is-editing');
+    panel.innerHTML = '<div class="sample-note-surface" aria-hidden="true"></div><div class="sample-editor-heading"><button type="button" class="sample-back">← Library</button></div><label class="sample-title-label"><span class="sr-only">Sample note title</span><input class="sample-title" maxlength="100" aria-label="Sample note title" placeholder="Untitled note"></label><div class="sample-editor-content"><div class="sample-tag-list" aria-label="Note tags"></div><form class="sample-tag-form"><label class="sr-only" for="sample-tag-input">New tag</label><input id="sample-tag-input" maxlength="24" placeholder="Add a tag" autocomplete="off"><button type="submit">Add tag</button><span class="sample-tag-message" role="status"></span></form><div class="sample-editor-tools" role="group" aria-label="Sample note view"><button type="button" data-note-mode="write" aria-pressed="true">Write</button><button type="button" data-note-mode="preview" aria-pressed="false">Preview</button><span class="sample-word-count"></span></div><textarea class="sample-note-input" aria-label="Sample note text" maxlength="12000" spellcheck="true"></textarea><div class="sample-note-preview" aria-label="Rendered sample note" tabindex="0" hidden></div></div>';
     const title = panel.querySelector('.sample-title');
     const input = panel.querySelector('textarea');
     const preview = panel.querySelector('.sample-note-preview');
@@ -137,13 +151,19 @@
     });
     renderTags();
     updateCount();
-    motion?.enter(panel);
+    const top = panel.getBoundingClientRect().top;
+    if (top < 0 || top > innerHeight * .65) {
+      window.scrollTo({top:window.scrollY + top - 24,behavior:'instant'});
+      origin.card = origin.title = null;
+    }
+    motion?.openNote(panel,origin,isNew);
     if (isNew) title.focus({preventScroll:true});
     else panel.querySelector('.sample-back').focus({preventScroll:true});
     announce(isNew ? 'New note. Give it a title and try a line.' : 'Opened ' + (note.title.trim() || 'Untitled note') + '. You can edit this sample.');
   };
   createButton.addEventListener('click', () => {
     if (notes.length >= 20) { announce('This sample holds twenty notes. Reload to start again.'); return; }
+    if (!panel.classList.contains('is-editing')) libraryScroll = window.scrollY;
     const note = {id:nextId++,title:'',body:'',tags:[]};
     notes.unshift(note);
     query = '';
