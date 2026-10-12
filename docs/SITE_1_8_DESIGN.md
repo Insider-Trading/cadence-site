@@ -48,3 +48,8 @@ Headings now name Notes, Themes, Rhyme highlights and Sync. Duplicate eyebrows, 
 Theme, Rhyme palette and Patterns are independent. Three interface themes preserve font, palette, patterns and rhyme-color visibility. The three colorblind-friendly palettes use the application's values and existing contrast adjustment; selecting a palette does not enable patterns. Defaults remain Cadence, Newsreader, colors on and patterns off.
 
 Seventeen automated tests pass. Browser review covers desktop, 320px, 390px, short landscape and enlarged text, plus editing, tags/checklists, rhyme corrections, independent appearance controls, focus, reduced motion and script-free fallbacks. Metadata and setup wording are refreshed. Remaining publication work is product/social capture refresh, broader-browser and navigation/disclosure acceptance, and separately authorized application publication with independent public-asset verification. No deployment was performed.
+
+
+## Hero gutter refinement, October 12
+
+Owner review removed the older vertical divider and multicolor strip beside the opening verse. A reserved number gutter with a 14px text gap now provides alignment on desktop and phones. This supersedes the 1.6 divider choice. Browser checks at 1440px, 390px and 320px confirm no horizontal overflow, consistent number spacing and working family selection. Verse text and highlighting are unchanged.

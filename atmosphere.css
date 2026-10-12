@@ -55,19 +55,6 @@ body.mode-hybrid {
   to { transform:translate3d(-2%,-2%,0) scale(1); opacity:.8; }
 }
 .mode-hybrid .hero-a em { color:var(--cyan); }
-.hero-a .verse-sheet {
-  border-left-color:#3ad8e654;
-}
-.hero-a .verse-sheet::before {
-  content:'';
-  position:absolute;
-  top:32px;
-  left:-1px;
-  width:2px;
-  height:88px;
-  background:linear-gradient(var(--cyan),var(--orange),var(--pink),var(--violet));
-  box-shadow:0 0 18px #3ad8e626;
-}
 .release-label span { background:#3ad8e60b; border-color:#3ad8e666; }
 #product .eyebrow { color:var(--cyan); }
 #mobile .chapter { color:var(--lime); }
