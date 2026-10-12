@@ -39,3 +39,12 @@ Refresh remaining product captures, setup guidance, page/social metadata and soc
 ## Rhyme correction verification, October 11
 
 Fourteen content, contrast and correction-state tests pass. Browser checks verify reassignment, exclusion, Undo, Reset, exact verse preservation, 19 selectable words, no images in the section, keyboard activation/Escape, rapid selection and mobile panel placement. Desktop, 320px, 390px and 844 x 390 landscape retain the selected word and corrections without horizontal overflow; phone controls measure at least 44px. Normal motion runs, paused motion stops while selection still works, and the reduced-motion fixture records zero animation calls while corrections still apply. Script-free fallback remains readable. Physical Pixel taps verify reassignment and exclusion; display OFF is verified afterward and temporary forwarding removed. These checks cover this sample, not broader site release acceptance.
+
+
+## Wording and independent appearance controls, October 11
+
+Headings now name Notes, Themes, Rhyme highlights and Sync. Duplicate eyebrows, captions and selection narration are removed. The personal introduction and original verse are preserved. Free/offline/no-AI information appears once near the introduction. Each editable sample has one reset notice; useful screen-reader announcements remain. Use Font, Theme, Rhyme palette, Patterns and Sync consistently. Supporting text must explain a consequence, limitation, unfamiliar option or next step. Review whole rendered screens and remove redundant text before rewriting it. The application repository's docs/UI_WRITING.md records the permanent standard.
+
+Theme, Rhyme palette and Patterns are independent. Three interface themes preserve font, palette, patterns and rhyme-color visibility. The three colorblind-friendly palettes use the application's values and existing contrast adjustment; selecting a palette does not enable patterns. Defaults remain Cadence, Newsreader, colors on and patterns off.
+
+Seventeen automated tests pass. Browser review covers desktop, 320px, 390px, short landscape and enlarged text, plus editing, tags/checklists, rhyme corrections, independent appearance controls, focus, reduced motion and script-free fallbacks. Metadata and setup wording are refreshed. Remaining publication work is product/social capture refresh, broader-browser and navigation/disclosure acceptance, and separately authorized application publication with independent public-asset verification. No deployment was performed.

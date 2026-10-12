@@ -87,7 +87,7 @@
 .sample-footer>span:first-child { flex:1; }
 .sample-footer>span:last-child { flex:none; }
 .sample-editor-heading { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:14px; }
-.sample-session-state { font-size:11px; color:var(--sample-muted); }
+
 .sample-app .sample-back { background:transparent; }
 .sample-title-label { display:block; margin-bottom:16px; }
 .sample-app input.sample-title { font:400 30px/1.3 var(--writing); background:transparent; }
@@ -110,7 +110,7 @@
 .sample-task input { width:20px; height:20px; margin:7px 0 0; accent-color:var(--cyan); flex:none; }
 .sample-note-preview .sample-placeholder,.sample-empty { color:var(--sample-muted); }
 .theme-toolbar { display:flex; flex-wrap:wrap; gap:10px 24px; align-items:center; padding:14px 24px; border-bottom:1px solid var(--sample-border); background:var(--sample-surface); }
-.theme-toolbar label { display:flex; gap:10px; align-items:center; min-height:44px; font-size:13px; cursor:pointer; }
+.theme-toolbar label { display:flex; flex-wrap:wrap; gap:10px; align-items:center; min-height:44px; font-size:13px; cursor:pointer; }
 .theme-toolbar select { max-width:100%; }
 .theme-toolbar input { width:18px; height:18px; accent-color:var(--cyan); }
 .theme-writing { background:var(--sample-editor); padding:34px 52px; min-height:390px; }
@@ -147,7 +147,7 @@
 @media(max-width:360px) {
   .sample-note-grid { grid-template-columns:1fr; }
   .sample-app .sample-note-card { min-height:140px; }
-  .sample-session-state { max-width:90px; text-align:right; }
+
 }
 @media(prefers-reduced-motion:reduce) {
   .sample-app,.sample-app * { transition:none!important; }
