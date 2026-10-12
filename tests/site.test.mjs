@@ -39,7 +39,7 @@ test('navigation and local resources resolve', () => {
   }
 });
 test('requested word and Lab examples remain', () => {
-  for (const word of ['pressure','session','lesson','flow','glow','show','crazy broke','maybe','baby','wavy','both','bro','smoke','Maybe','Both']) assert.ok(html.includes(word), word);
+  for (const word of ['pressure','session','lesson','flow','glow','show','crazy broke','maybe','baby','wavy','smoke','Maybe','Smoke']) assert.ok(html.includes(word), word);
   assert.match(html, /Write<\/mark> it then <mark class="violet">recite<\/mark> it then <mark class="violet">revise<\/mark> it/);
 });
 test('safety and accessibility are part of the page', () => {
@@ -49,8 +49,8 @@ test('safety and accessibility are part of the page', () => {
   assert.doesNotMatch(html, /hear the rhyme|creativity, elevated|with room to work|still free\. still your writing/i);
 });
 test('social metadata points to the generated 1200 by 630 image', () => {
-  assert.ok(html.includes('/assets/cadence-1-7-social.png'));
-  const png = readFileSync(new URL('assets/cadence-1-7-social.png', root));
+  assert.ok(html.includes('/assets/cadence-1-8-social.png'));
+  const png = readFileSync(new URL('assets/cadence-1-8-social.png', root));
   assert.equal(png.subarray(1, 4).toString(), 'PNG');
   assert.equal(png.readUInt32BE(16), 1200);
   assert.equal(png.readUInt32BE(20), 630);

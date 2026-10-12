@@ -62,3 +62,12 @@ Opening a nearby note expands its filled writing surface from the chosen card an
 A single theme selection background follows the chosen preset, including wrapped rows. Rapid changes start from its current displayed position. Interface and rhyme colors transition while writing geometry stays fixed; font, palette, patterns and color visibility remain independent. All motion uses the shared timing/easing and existing pause/reduced-motion controls.
 
 Twenty-one tests pass, including interruption, pause/visibility/resize cleanup, reduced motion, mobile timing and selection retargeting. Browser checks cover desktop, 320/390px and short landscape, editable draft preservation, keyboard activation, focus/scroll return, wrapped theme controls and rapid selection. Instrumented fixtures confirm moving surfaces/titles in normal mode, immediate settling on Pause and zero spatial animations under reduced motion. Physical Pixel checks cover opening/returning and creating a note with immediate Gboard input; the guarded helper verifies display OFF and temporary forwarding is removed. No application source, user writing or publication was changed.
+
+
+## Final prerelease review, October 12
+
+All 21 tests pass. Remaining Rhyme Lab, Share Studio, Sync and social captures are refreshed from the current application or site renderer. The Lab example uses the ready engine results for crazy broke, with maybe and smoke selected. The Sync capture is explicitly labeled as a test vault with automatic sync paused; no live-account sync acceptance is implied. The owner caught an automation cursor in the first Sync capture. It was replaced, and all six page images plus the social image were inspected at full size for cursors, pointer halos, transient overlays and capture artifacts. Capture review must check these before committing release imagery.
+
+Current review covers 320px, 390px, desktop and short landscape, navigation/menu dismissal, disclosure controls, note edits and tags, focus return, independent theme/palette/pattern settings, and rhyme correction with Undo. A second Chromium browser, Vivaldi, passes the bounded interaction smoke without console errors or overflow. Existing unchanged enlarged-text, reduced-motion and script-free acceptance remains recorded above; Firefox/Safari are not newly verified.
+
+The earlier remaining-capture and navigation tasks are closed. Draft PR19 stays unmerged and undeployed until owner-authorized app publication and independent public-asset verification. No further design changes were made.
