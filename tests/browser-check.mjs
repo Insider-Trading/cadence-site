@@ -11,7 +11,7 @@ const { chromium } = await import(process.env.PLAYWRIGHT_MODULE
 const root = fileURLToPath(new URL('../', import.meta.url));
 const output = resolve(root, '.superpowers/qa');
 await mkdir(output, { recursive: true });
-const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png' };
+const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.mjs': 'text/javascript', '.png': 'image/png' };
 const server = createServer(async (req, res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
@@ -37,6 +37,8 @@ try {
     assert.equal(await page.locator('#hero-verse p').count(), 4);
     assert.ok(await page.locator('.hero-a').isVisible());
     assert.ok(await page.locator('#product').isVisible());
+    assert.ok(await page.locator('[data-rhyme-demo]').isVisible());
+    assert.ok(await page.locator('[data-theme-app]').isVisible());
     if (width <= 900) {
       const menu = page.getByRole('button', { name: 'Menu', exact: true });
       await menu.click();

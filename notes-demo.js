@@ -30,7 +30,7 @@
     const origin = motion?.capture(panel.querySelector('.sample-title'),true);
     motion?.finish(panel);
     panel.classList.remove('is-editing');
-    panel.innerHTML = '<label class="sample-search"><span>Find a note</span><input type="search" placeholder="Search titles, text or tags" aria-label="Search sample notes"></label><div class="sample-note-grid"></div><p class="sample-empty" hidden>No notes match. Try another search.</p>';
+    panel.innerHTML = '<label class="sample-search"><span>Find a note</span><input type="search" placeholder="Search titles, text or tags" aria-label="Search sample notes"></label><div class="sample-note-grid"></div><p class="sample-empty" hidden>No matching notes. Try a different word or tag.</p>';
     const search = panel.querySelector('input');
     const grid = panel.querySelector('.sample-note-grid');
     const empty = panel.querySelector('.sample-empty');
@@ -44,7 +44,7 @@
         card.dataset.noteId = note.id;
         card.setAttribute('aria-label','Open ' + (note.title.trim() || 'Untitled note'));
         card.append(element('span','sample-card-title',note.title.trim() || 'Untitled note'));
-        card.append(element('span','sample-snippet',note.body.replace(/^#+\s/gm,'').replace(/^- \[[ x]\]\s/gm,'').slice(0,145) || 'A blank page. Start anywhere.'));
+        card.append(element('span','sample-snippet',note.body.replace(/^#+\s/gm,'').replace(/^- \[[ x]\]\s/gm,'').slice(0,145) || 'Empty note'));
         const tags = element('span','sample-card-tags');
         note.tags.forEach(tag => tags.append(element('span','sample-tag',tag)));
         card.append(tags);
@@ -69,7 +69,7 @@
     const origin = {card:motion?.capture(card),title:motion?.capture(card?.querySelector('.sample-card-title'),true)};
     motion?.finish(panel);
     panel.classList.add('is-editing');
-    panel.innerHTML = '<div class="sample-note-surface" aria-hidden="true"></div><div class="sample-editor-heading"><button type="button" class="sample-back">← Library</button></div><label class="sample-title-label"><span class="sr-only">Sample note title</span><input class="sample-title" maxlength="100" aria-label="Sample note title" placeholder="Untitled note"></label><div class="sample-editor-content"><div class="sample-tag-list" aria-label="Note tags"></div><form class="sample-tag-form"><label class="sr-only" for="sample-tag-input">New tag</label><input id="sample-tag-input" maxlength="24" placeholder="Add a tag" autocomplete="off"><button type="submit">Add tag</button><span class="sample-tag-message" role="status"></span></form><div class="sample-editor-tools" role="group" aria-label="Sample note view"><button type="button" data-note-mode="write" aria-pressed="true">Write</button><button type="button" data-note-mode="preview" aria-pressed="false">Preview</button><span class="sample-word-count"></span></div><textarea class="sample-note-input" aria-label="Sample note text" maxlength="12000" spellcheck="true"></textarea><div class="sample-note-preview" aria-label="Rendered sample note" tabindex="0" hidden></div></div>';
+    panel.innerHTML = '<div class="sample-note-surface" aria-hidden="true"></div><div class="sample-editor-heading"><button type="button" class="sample-back">← Library</button></div><label class="sample-title-label"><span class="sr-only">Sample note title</span><input class="sample-title" maxlength="100" aria-label="Sample note title" placeholder="Untitled note"></label><div class="sample-editor-content"><div class="sample-tag-list" aria-label="Note tags"></div><form class="sample-tag-form"><label class="sr-only" for="sample-tag-input">New tag</label><input id="sample-tag-input" maxlength="24" placeholder="Add a tag" autocomplete="off"><button type="submit">Add tag</button><span class="sample-tag-message" role="status"></span></form><div class="sample-editor-tools" role="group" aria-label="Sample note view"><button type="button" data-note-mode="write" aria-pressed="true">Write</button><button type="button" data-note-mode="preview" aria-pressed="false">Preview</button><span class="sample-word-count"></span></div><textarea class="sample-note-input" aria-label="Sample note text" maxlength="12000" spellcheck="true"></textarea><div class="sample-note-preview" aria-label="Note preview" tabindex="0" hidden></div></div>';
     const title = panel.querySelector('.sample-title');
     const input = panel.querySelector('textarea');
     const preview = panel.querySelector('.sample-note-preview');
@@ -79,7 +79,10 @@
     const tagMessage = panel.querySelector('.sample-tag-message');
     title.value = note.title;
     input.value = note.body;
-    const updateCount = () => { wordCount.textContent = countWords(note.body) + ' words'; };
+    const updateCount = () => {
+      const count = countWords(note.body);
+      wordCount.textContent = count + (count === 1 ? ' word' : ' words');
+    };
     title.addEventListener('input', () => { note.title = title.value; });
     input.addEventListener('input', () => { note.body = input.value; updateCount(); });
     panel.querySelector('.sample-back').addEventListener('click',() => library(note.id));
@@ -102,8 +105,8 @@
       event.preventDefault();
       const tag = tagInput.value.trim();
       if (!tag) { tagMessage.textContent = 'Enter a tag first.'; return; }
-      if (note.tags.some(value => value.toLocaleLowerCase() === tag.toLocaleLowerCase())) { tagMessage.textContent = 'That tag is already here.'; return; }
-      if (note.tags.length >= 8) { tagMessage.textContent = 'This sample allows eight tags per note.'; return; }
+      if (note.tags.some(value => value.toLocaleLowerCase() === tag.toLocaleLowerCase())) { tagMessage.textContent = 'This note already has that tag.'; return; }
+      if (note.tags.length >= 8) { tagMessage.textContent = 'Remove a tag before adding another. Each sample note can have eight.'; return; }
       note.tags.push(tag);
       renderTags();
       tagInput.value = '';
@@ -159,7 +162,7 @@
     motion?.openNote(panel,origin,isNew);
     if (isNew) title.focus({preventScroll:true});
     else panel.querySelector('.sample-back').focus({preventScroll:true});
-    announce(isNew ? 'New note. Give it a title and try a line.' : 'Opened ' + (note.title.trim() || 'Untitled note') + '. You can edit this sample.');
+    announce(isNew ? 'New note. Enter a title.' : 'Opened ' + (note.title.trim() || 'Untitled note') + '.');
   };
   createButton.addEventListener('click', () => {
     if (notes.length >= 20) { announce('This sample holds twenty notes. Reload to start again.'); return; }

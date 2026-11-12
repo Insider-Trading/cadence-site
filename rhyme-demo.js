@@ -62,7 +62,7 @@ if (host) {
     panel.style.setProperty('--rhyme-accent',activeFamily ? 'var(--' + activeFamily + ')' : 'var(--sample-muted)');
     title.textContent = selected.word;
     familyLabel.textContent = activeFamily ? familyNames[activeFamily] + ' family' : 'Not a rhyme';
-    members.textContent = activeFamily ? state.members(activeFamily).join(' · ') : 'This word is ungrouped. Choose a family to bring it back.';
+    members.textContent = activeFamily ? state.members(activeFamily).join(' · ') : 'Choose a family to highlight this word again.';
     choices.querySelectorAll('button').forEach(button => {
       const current = button.dataset.targetFamily === activeFamily;
       button.setAttribute('aria-pressed',String(current));
@@ -84,7 +84,7 @@ if (host) {
     button.addEventListener('click',() => {
       if (!state.change(selected.word,family)) return;
       render();
-      status.textContent = selected.word + ' now belongs to the ' + label + ' family. The verse and family list have changed.';
+      status.textContent = selected.word + ' now belongs to the ' + label + ' family.';
       motion?.press(selected.button);
     });
     choices.append(button);
@@ -94,13 +94,13 @@ if (host) {
     selected = item;
     render();
     motion?.enter(panel);
-    status.textContent = 'Selected ' + item.word + '. The correction panel shows its family.';
+    status.textContent = 'Selected ' + item.word + ' (' + familyLabel.textContent + ').';
   }));
   exclude.addEventListener('click',() => {
     if (!state.change(selected.word,null)) return;
     render();
     selected.button.focus({preventScroll:true});
-    status.textContent = selected.word + ' is no longer highlighted as a rhyme. You can choose another family or undo.';
+    status.textContent = selected.word + ' is no longer highlighted. Choose a family or use Undo.';
   });
   undo.addEventListener('click',() => {
     if (!state.undo()) return;
@@ -112,7 +112,7 @@ if (host) {
     if (!state.reset()) return;
     render();
     selected.button.focus({preventScroll:true});
-    status.textContent = 'Original analysis restored. Your sample corrections have been cleared.';
+    status.textContent = 'Sample reset to the original rhyme families.';
   });
   panel.addEventListener('keydown',event => {
     if (event.key === 'Escape') { event.preventDefault(); selected.button.focus({preventScroll:true}); }

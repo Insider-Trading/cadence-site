@@ -37,7 +37,7 @@ import { THEMES, PALETTES, INITIAL_THEME, updateTheme } from './theme-state.mjs'
     if (state.theme === button.dataset.theme) return;
     state = updateTheme(state,'theme',button.dataset.theme);
     render();
-    status.textContent = THEMES[state.theme].name + ' theme applied to preview.';
+    status.textContent = THEMES[state.theme].name + ' theme selected.';
     placeSelection(true);
   }));
   for (const [selector,field] of [['[data-rhyme-palette]','palette'],['[data-theme-font]','font'],['[data-rhyme-colors]','colors'],['[data-rhyme-patterns]','patterns']]) {
