@@ -20,11 +20,11 @@ test('owner verse and engine marks stay intact', () => {
 });
 test('release boundary is honest', () => {
   assert.doesNotMatch(html, /1\.6 preview|COMING IN 1\.6|Not published yet|being prepared for release/);
-  assert.match(html, /releases\/download\/v1\.8\.0\/Cadence_1\.8\.0_x64-setup\.exe/);
-  assert.match(html, /Cadence 1\.8\.0 is available for desktop and Android/);
-  assert.match(html, /data-download="android"[^>]*href="https:\/\/github\.com\/Insider-Trading\/cadence-site\/releases\/download\/v1\.8\.0\/cadence-v1\.8\.0-android\.apk"/);
-  assert.match(html, /releases\/download\/v1\.8\.0\/SHA256SUMS\.txt/);
-  assert.match(html, /releases\/download\/v1\.8\.0\/SHA256SUMS\.txt/);
+  assert.match(html, /releases\/download\/v1\.9\.0\/Cadence_1\.9\.0_x64-setup\.exe/);
+  assert.match(html, /Cadence 1\.9\.0 is available for desktop and Android/);
+  assert.match(html, /data-download="android"[^>]*href="https:\/\/github\.com\/Insider-Trading\/cadence-site\/releases\/download\/v1\.9\.0\/cadence-v1\.9\.0-android\.apk"/);
+  assert.match(html, /releases\/download\/v1\.9\.0\/SHA256SUMS\.txt/);
+  assert.match(html, /releases\/download\/v1\.9\.0\/SHA256SUMS\.txt/);
   assert.doesNotMatch(html, /releases\/download\/v1\.5\.1\//);
   assert.match(html, /not on Google Play/);
   assert.match(html, /Do not uninstall first/);
@@ -49,8 +49,8 @@ test('safety and accessibility are part of the page', () => {
   assert.doesNotMatch(html, /hear the rhyme|creativity, elevated|with room to work|still free\. still your writing/i);
 });
 test('social metadata points to the generated 1200 by 630 image', () => {
-  assert.ok(html.includes('/assets/cadence-1-8-social.png'));
-  const png = readFileSync(new URL('assets/cadence-1-8-social.png', root));
+  assert.ok(html.includes('/assets/cadence-1-9-social.png'));
+  const png = readFileSync(new URL('assets/cadence-1-9-social.png', root));
   assert.equal(png.subarray(1, 4).toString(), 'PNG');
   assert.equal(png.readUInt32BE(16), 1200);
   assert.equal(png.readUInt32BE(20), 630);

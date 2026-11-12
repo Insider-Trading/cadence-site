@@ -46,7 +46,7 @@
       else delete verse.dataset.family;
       for (const option of families.querySelectorAll('button'))
         option.setAttribute('aria-pressed', String(option.dataset.family === family));
-      hint.textContent = family ? button.dataset.description + ' · Tap again to see all four.' : 'Pick a color to follow its sounds through the verse.';
+      hint.textContent = family ? button.dataset.description + '. Select the color again to show all four families.' : 'Pick a color to follow those rhymes through the verse.';
       button.getAnimations().forEach(animation => animation.cancel());
       animate(button, [{transform:'scale(.96)'},{transform:'scale(1)'}],240);
     });
